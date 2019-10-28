@@ -1,13 +1,31 @@
 
-<h1>Bienvenue sur la fiche utilisateur de <%= params["user"] %> </h1>
+<h1>Bienvenue sur la fiche utilisateur de <%= params["user"] %>  <br/> </h1>
 
 <p>
 
-	Nom : <%= @user.first_name + " " + @user.last_name%><br/><br/>
-	Age : <%= @user.age %> <br/><br/>
-	Description : <%= @user.description %> <br/><br/>
-	Email : <%= @user.email%> <br/><br/>
-	Ville : <%= @user.city.name%> <br/><br/>
+<div class="card">
+	  <img class="card-img-top" src="https://i.kym-cdn.com/entries/icons/facebook/000/016/546/hidethepainharold.jpg" alt="Card image cap">
+	  
+	  <div class="card-body">
+
+	    <h5 class="card-title text-center"><%= @user.first_name + " " + @user.last_name%></h5>
+	    <p class="card-text"> <br/> <br/> Se définit comme : <%= @user.description %>  </p>
+	  </div>
+	  
+	  <ul class="list-group list-group-flush">
+
+	    <li class="list-group-item "> Age : <%= @user.age %> ans <br/></li>
+	 		<li class="list-group-item "> Email : <%= @user.email%> <br/></li>
+	    <li class="list-group-item "> Ville : <%= @user.city.name%>  <br/></li>
+
+	  </ul>
+
+	  <div class="card-body text-center">
+			<a href="/home" class="badge badge-pill badge-danger"> Retour maison </a>
+		</div>	
+	</div>
+
+
 
 
 </p>
