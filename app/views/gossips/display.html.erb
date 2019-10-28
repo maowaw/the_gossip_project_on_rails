@@ -1,0 +1,13 @@
+<h1>Bonsoooir et bienvenue sur le gossip numéro <%= params["id"] %> </h1>
+
+<p>
+
+Auteur : <%= @gossip.user.first_name %><br/><br/>
+Titre : <%= @gossip.title %> <br/><br/>
+Contenu : <%= @gossip.content %> <br/><br/>
+Date de création : <%= @gossip.created_at%> <br/><br/>
+
+<a href="/<%= @gossip.user.first_name %>/"> Clique ici pour voir la fiche complète de cette commère </a>
+
+</p>
+

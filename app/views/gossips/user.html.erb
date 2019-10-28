@@ -1,0 +1,13 @@
+
+<h1>Bienvenue sur la fiche utilisateur de <%= params["user"] %> </h1>
+
+<p>
+
+	Nom : <%= @user.first_name + " " + @user.last_name%><br/><br/>
+	Age : <%= @user.age %> <br/><br/>
+	Description : <%= @user.description %> <br/><br/>
+	Email : <%= @user.email%> <br/><br/>
+	Ville : <%= @user.city.name%> <br/><br/>
+
+
+</p>

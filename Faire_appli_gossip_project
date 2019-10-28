@@ -1,0 +1,25 @@
+FAIRE L'APPLI THE GOSSIP PROJECT 28/10/19
+
+///LES BASES
+
+rails new -d postgresql the-gossip-project
+
+subl the-gossip-project 
+
+cd the-gossip-project
+
+bundle install
+
+rails db:create
+
+rails g model user 
+(et tous les autres modèles, que l'on importe depuis l'ancien)
+
+rails generate controller team
+
+*modifier le fichier route.rb* : 	get 'team', to: 'static_pages#team'
+ 
+*modifier la view correspondante*
+
+
+///LA MISE EN FORME 

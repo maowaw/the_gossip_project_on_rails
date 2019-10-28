@@ -1,0 +1,22 @@
+<h1><br/>Bienvenue dans le site des potins de THP <br/></h1>
+
+<p>  
+	<div class="card-columns">
+
+		<% Gossip.all.each_with_index do |gossip| %>
+
+		  <div class="card text-white bg-dark mb-3">
+		    <div class="card-body">
+		      <h5 class="card-title"> <%= gossip.title %> </h5>
+		      <p class="card-text"> écrit par <%= gossip.user.first_name + " " + gossip.user.last_name %> </p>
+		    </div>
+		    <div class="card-footer">
+		      <small class="text-muted"> <a href="/gossips/<%= gossip.id %>/"> Voir ce potin </a>  </small>
+		    </div>
+		  </div>
+
+		<% end %>
+
+	</div>
+
+</p>
