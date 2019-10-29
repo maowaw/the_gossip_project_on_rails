@@ -1,5 +1,13 @@
 class User < ApplicationRecord
 
+#Infos sur les attributes indépendants :
+
+	validates :email,
+		uniqueness: true, #impossible que 2 utilisateurs rentrent le même email
+		format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: "email adress please" } #impose le format d'un email
+
+#Infos sur les liens avec les autres classes 
+
 	has_many :gossips
 	has_many :comments
 	belongs_to :city
