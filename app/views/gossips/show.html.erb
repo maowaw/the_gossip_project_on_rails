@@ -1,3 +1,5 @@
+
+
 <h1>Bonsoooir et bienvenue sur le gossip numéro <%= params["id"] %>  <br/> </h1>
 
 <p>
@@ -6,23 +8,59 @@
 
 	  <div class="card-body">
 
-	    <h2 class="card-title text-center"> <br/><%= @gossip.title %> </h5>
+	    <h2 class="card-title text-center"> <br/><%= @gossip.title %> </h2>
 	    <p class="card-text"> <br/> <br/> <%= @gossip.content %> </p>
 	  </div>
 	  
 	  <ul class="list-group list-group-flush">
 
 	    <li class="list-group-item text-right">écrit par <%= @gossip.user.first_name %></li>
-	 
+	 		<li class="list-group-item text-right">à : <%= @gossip.user.city.name %></li>
 
 	  	<li class="card-footer"> <small class="text-muted">créé le : <%= @gossip.created_at%></small></li>
 	  </ul>
 
-	  <div class="card-body text-center">
-			<a href="/<%= @gossip.user.first_name %>/" class="badge badge-pill badge-danger"> Clique ici pour voir la fiche complète de cette commère </a>
-		</div>	
+
+	  <ul>
+    	<% Comment.where(gossip_id: params["id"]).each do |comment| %>    
+      
+      	<p> <%= comment.user.first_name %> a écrit : <br/>
+        		<%= comment.content %> <br/>
+
+       		<div class="card-footer"> <small class="text-muted">
+       		<div class="badge badge-pill badge-danger"> 
+	  				<%= link_to "Editer ce comment",edit_comment_path(comment) %>
+					</div> <br/></small></div>
+      	</p>
+
+         
+    <%end %> </ul>
+
+			<div class="badge badge-pill badge-danger"> 
+				<%= link_to 'Commenter ce gossip', new_comment_path %> 
+			</div><br/>	
+
+			<div class="badge badge-pill badge-danger"> 
+	  		<%= link_to "Editer ce gossip",edit_gossip_path(@gossip.id) %>
+			</div> <br/>
+
+		  <div class="card-body text-center badge badge-pill badge-danger">
+				<%= link_to 'Clique ici pour voir la fiche complète de cette commère',user_path(@gossip.user.id) %> 
+			</div> <br/>
+
+			<div class="badge badge-pill badge-danger"> 
+	  		<%= link_to "Voir la fiche ville de l'auteur",city_path(@gossip.user.city_id) %>
+			</div> <br/>
+
+			<div class="badge badge-pill badge-danger"> 
+				<%= link_to 'Supprimer ce gossip', gossip_path(@gossip), method: 'delete' %>
+			</div> <br/>
+
+			<div class="badge badge-pill badge-danger"> 
+				<%= link_to 'Retour maison', gossips_path %> 
+			</div><br/>	
+
+
 	</div>
-
-
 </p>
 
