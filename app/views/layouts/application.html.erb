@@ -34,12 +34,20 @@
       <li class="nav-item">
         <a class="nav-link" href="/contact">Contact</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" <%= link_to "S'inscrire", new_user_path %>
+      </li> </a> 
+      <li class="nav-item">
+        <a class="nav-link" <%= link_to "Se connecter", new_session_path %>
+      </li> </a>
     </ul>
   </div> 
 
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="cette barre ne" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">sert à R</button>
+    <input class="form-control mr-sm-2" type="search" placeholder="cette barre ne sert à R" aria-label="Search">
+
+  <button class= "btn-outline-success my-2 my-sm-0">
+    <%= link_to "Se déconnecter", session_path(session.id), method: :delete %> </button>
   </form>
   </nav>
 

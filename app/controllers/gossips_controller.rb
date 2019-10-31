@@ -32,17 +32,16 @@ class GossipsController < ApplicationController
 	  # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
 	
   #ici on réceptionne les data du formulaire, envoyées par la méthode new (cf dans views)
-	  @gossip = Gossip.new(user_id: "31", title:params[:title], content:params[:content]) # avec xxx qui sont les données obtenues à partir du formulaire
-
-	  if @gossip.save # essaie de sauvegarder en base @gossip
-	    # si ça marche, il redirige vers la page d'index du site
-	    flash[:notice] = 'Bien ouej modafuck'
+	  @gossip = Gossip.create(user_id: params[:user_id], title: params[:title], content: params[:content])
+	  @gossip.user = User.find_by(id: session[:user_id])
+	  if @gossip.save# essaie de sauvegarder en base @gossip
+		    # si ça marche, il redirige vers la page d'index du site
+	    flash[:notice] = "Potin bien créé !"
 	    redirect_to gossips_path #gossips_path est l'adresse de l'index
-
 	  else
-	    # sinon, il render la view new (qui est celle sur laquelle on est déjà)
-	  	render 'new'
-  end
+	  	# sinon, il render la view new (qui est celle sur laquelle on est déjà)
+	    render :new
+	  end
 	end
 
 

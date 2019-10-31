@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+	has_secure_password
+
 #Infos sur les attributes indépendants :
 
 	validates :email,

@@ -16,7 +16,7 @@ end
 
 
 10.times do
-	user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, age: rand(15..110), city: City.all.sample, description: Faker::TvShows::RuPaul.queen)
+	user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, age: rand(15..110), city: City.all.sample, description: Faker::TvShows::RuPaul.queen, password: Faker::Hipster.words(number: 1))
 end
 
 
