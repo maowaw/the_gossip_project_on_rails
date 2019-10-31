@@ -6,8 +6,8 @@
 
 	<div class="card">
 
+<!-- Affichage du gossip -->		
 	  <div class="card-body">
-
 	    <h2 class="card-title text-center"> <br/><%= @gossip.title %> </h2>
 	    <p class="card-text"> <br/> <br/> <%= @gossip.content %> </p>
 	  </div>
@@ -16,49 +16,62 @@
 
 	    <li class="list-group-item text-right">écrit par <%= @gossip.user.first_name %></li>
 	 		<li class="list-group-item text-right">à : <%= @gossip.user.city.name %></li>
-
 	  	<li class="card-footer"> <small class="text-muted">créé le : <%= @gossip.created_at%></small></li>
 	  </ul>
+	</div>
 
 
+<!-- Formulaire pour écrire des comments -->
+
+		<div style="font-family: 'Reenie Beanie', cursive;color: white; margin-top: 5%;font-size: 2em;" >
+		    <%= form_tag url_for(controller: 'comments', action: 'create', method: 'post') do %>
+		    
+		      <%= label_tag 'Ton commentaire' %><br/>
+		      <%= text_area_tag 'content'%> <br/> <br/>
+		      <%= submit_tag "Commenter" %>
+		    <% end %>
+		</div> 
+
+
+<!-- Affichage des commentaires -->
 	  <ul>
-    	<% Comment.where(gossip_id: params["id"]).each do |comment| %>    
+    	<% Comment.where(gossip_id: @gossip.id).reverse.each do |comment| %>
       
       	<p> <%= comment.user.first_name %> a écrit : <br/>
         		<%= comment.content %> <br/>
 
        		<div class="card-footer"> <small class="text-muted">
        		<div class="badge badge-pill badge-danger"> 
-	  				<%= link_to "Editer ce comment",edit_comment_path(comment) %>
-					</div> <br/></small></div>
+	  				<%= link_to "Editer ce comment",edit_comment_path(comment) %> <br/>
+						<%= link_to 'Supprimer ce commentaire', comment_path(comment), method: 'delete' %> <br/>
+					</div> 
+					</div> </small></div>
       	</p>
-
          
-    <%end %> </ul>
+    	<%end %> 
+  	</ul>
 
-			<div class="badge badge-pill badge-danger"> 
-				<%= link_to 'Commenter ce gossip', new_comment_path %> 
-			</div><br/>	
+<!-- Boutons de sortie/redirection -->
 
-			<div class="badge badge-pill badge-danger"> 
-	  		<%= link_to "Editer ce gossip",edit_gossip_path(@gossip.id) %>
-			</div> <br/>
+
+	  	<a class="badge badge-pill badge-danger" href =	<%= link_to "Editer ce gossip",edit_gossip_path(@gossip.id) %> >
+			</div> <br/> </a>
 
 		  <div class="card-body text-center badge badge-pill badge-danger">
-				<%= link_to 'Clique ici pour voir la fiche complète de cette commère',user_path(@gossip.user.id) %> 
-			</div> <br/>
+			<a href =	<%= link_to 'Clique ici pour voir la fiche complète de cette com" mère',user_path(@gossip.user.id) %> >
+			</div> <br/> </a>
 
 			<div class="badge badge-pill badge-danger"> 
-	  		<%= link_to "Voir la fiche ville de l'auteur",city_path(@gossip.user.city_id) %>
-			</div> <br/>
+	  	<a href =	<%= link_to "Voir la fiche ville de l'auteur",city_path(@gossip.user.city_id) %> > 
+			</div> <br/></a>
 
 			<div class="badge badge-pill badge-danger"> 
-				<%= link_to 'Supprimer ce gossip', gossip_path(@gossip), method: 'delete' %>
-			</div> <br/>
+			<a href =<%= link_to 'Supprimer ce gossip', gossip_path(@gossip), method: 'delete' %> >
+			</div> <br/></a>
 
 			<div class="badge badge-pill badge-danger"> 
-				<%= link_to 'Retour maison', gossips_path %> 
-			</div><br/>	
+			<a href =	<%= link_to 'Retour maison', gossips_path %> >
+			</div><br/> </a>
 
 
 	</div>

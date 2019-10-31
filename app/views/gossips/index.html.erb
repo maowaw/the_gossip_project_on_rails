@@ -1,26 +1,27 @@
 <html>
-<body>
+	<body>
 
-<p id="notice"  role="alert" class=" alert-success" role="alert"> <%= notice %> </p>
+		<p id="notice"  role="alert" class=" alert-success" role="alert"> <%= notice %> </p>
+
+			<div class = "jumbotron jumbotron fluid">
+				<div class =  "container">
+					<h1 class="my-4"> Bienvenue sur le site des potins de THP <br/></h1>
+				</div>
+				 <div class="card-body text-center">
+				<a class="btn btn-outline-warning " href =	<%= link_to "Enregistrer un potin", new_gossip_path %> </div> <br/> </a>
+			</div>
+			</div>
 
 
+<div class="container">
 
-
-
-
-<h1> Bienvenue dans le site des potins de THP <br/></h1>
-
-
-<h3> Une idée de potin? </h3>
-<button type="button" class="btn btn-outline-warning"> <%=link_to "Enregistrer un potin", new_gossip_path%> </button>
 
 
 <h3><br/> Voir tous les potins </h3>
-<p>  
+ 
 	<div class="card-columns">
 
 		<% Gossip.all.each_with_index do |gossip| %>
-
 		  <div class="card text-white bg-dark mb-3">
 		    <div class="card-body">
 		      <h5 class="card-title"> <%= gossip.title %> </h5>
@@ -33,7 +34,7 @@
 
 		      	<%= Comment.where(gossip_id: gossip.id).count || 0 %> commentaire(s) <br/>
 
-		      	<%= link_to 'Voir ce potin',gossip_path(gossip.id) %>  </small>
+		      	<button class="btn btn-warning"><%= link_to 'Voir ce potin',gossip_path(gossip.id) %> </button> </small>
 		    </div>
 		  </div>
 
@@ -41,7 +42,7 @@
 
 	</div>
 
-</p>
+</div>
 
 </body>
 </html>

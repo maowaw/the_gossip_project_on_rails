@@ -73,8 +73,8 @@ class CommentsController < ApplicationController
 
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:notice] = 'Bien supprimé modafuck'
-    redirect_to comments_path
+    flash[:notice] = 'Commentaire bien supprimé modafuck'
+    redirect_to gossip_path(@comment.gossip_id)
 
 	end
 

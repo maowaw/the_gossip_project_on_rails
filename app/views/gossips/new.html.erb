@@ -25,34 +25,16 @@
       <%= label_tag 'Content' %>
       <%= text_area_tag 'content' %>
       <br /> <br />
+.
+      <%= select_tag "tags", options_from_collection_for_select(Tag.all, "id", "title", multiple: true) %>
+      <br /> <br />
 
 
-      <%= submit_tag "Create Post" %>
+      <%= submit_tag "Créer le gossip" %>
 
     <% end %>
 
-    <!-- ... -->
   </body>
 
 </html>
 
-
-
-<!-- 
-<h2> coucou </h2>
-
-<p>
-<form action= <%= gossips_path %> method="POST">
-
-      <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
-
-      Le titre de ton gossip : 
-      <input type="text" name="gossip_title">
-
-      Le contenu de ce scoop :
-      <input type="text" name="gossip_content">
-
-
-      <input type="submit" value="Valider">
-</form>
-</p> -->

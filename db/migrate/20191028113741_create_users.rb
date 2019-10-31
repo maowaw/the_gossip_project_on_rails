@@ -6,10 +6,15 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.text :description
       t.string :email
       t.integer :age
+      t.string :password_digest
 
       t.belongs_to :city, index: true
 
       t.timestamps
+
+
     end
   end
+
+
 end

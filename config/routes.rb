@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 #créé les 7 chemins REST
 	resources :comments
 
+#créé 3 chemins pour sessions
+	resources :sessions, only: [:new, :create, :destroy]
+
+
 #page d'accueil statique
   get 'home', to: 'static_pages#home'
 
